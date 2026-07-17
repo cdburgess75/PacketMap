@@ -3,6 +3,26 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.16.002] - 2026-07-16
+
+### Added
+
+- Light theme with ☀/☾ header toggle and Setup > Appearance buttons,
+  using the shared PileUp palette; map tiles render untinted in light mode.
+- PileUp-family visual language: glowing letter-spaced wordmark, scanline
+  body texture, card-based Setup, icon bottom nav, shared button styles.
+- New logo (map pin transmitting) in the family style: amber rounded
+  square, dark strokes; regenerated all PNG icons and social og-image.
+- README overhaul: hero image, screenshots, feature and test tables,
+  bridge diagram; GitHub Actions CI running the smoke suite.
+
+### Fixed
+
+- Receive-only login now uses a persistent PMAP#### pseudo-call; some
+  APRS-IS servers reject the N0CALL placeholder.
+- Setup view no longer bleeds over other tabs (CSS specificity).
+- Hidden alert toast no longer peeks into the header on the map tab.
+
 ## [2026.07.16.001] - 2026-07-16
 
 ### Added
