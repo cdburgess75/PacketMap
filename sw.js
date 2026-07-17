@@ -1,4 +1,4 @@
-const CACHE = "packetmap-2026.07.16.002";
+const CACHE = "packetmap-2026.07.16.003";
 const TILES = "packetmap-tiles";
 const TILE_LIMIT = 1500; // ~30 MB of OSM tiles, trimmed oldest-first
 const SHELL = [

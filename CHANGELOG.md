@@ -3,6 +3,14 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.16.003] - 2026-07-16
+
+### Added
+
+- Landscape fullscreen: rotating to landscape on the map tab hides the
+  header and tab bar so the map runs edge to edge; a ⛶ button (or
+  rotating back to portrait) restores them.
+
 ## [2026.07.16.002] - 2026-07-16
 
 ### Added

@@ -58,6 +58,7 @@ const dom = new JSDOM(html, {
       };
     })();
     Object.defineProperty(w, "localStorage", { value: store, configurable: true });
+    w.matchMedia = () => ({ matches: false, addEventListener: () => {}, removeEventListener: () => {} });
     w.fetch = () => Promise.resolve({ ok: true, text: () => Promise.resolve(""), json: () => Promise.resolve({}) });
     // no WebSocket / geolocation / indexedDB: the app must degrade gracefully
   },
