@@ -3,6 +3,14 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.011] - 2026-07-19
+
+### Fixed
+
+- Cache-bust the icon URLs (`apple-touch-icon`, favicon, and manifest icons) with
+  `?v=2` so a fresh "Add to Home Screen" fetches the new icon instead of the
+  Safari-cached old one.
+
 ## [2026.07.19.010] - 2026-07-19
 
 ### Changed
