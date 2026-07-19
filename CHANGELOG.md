@@ -3,6 +3,14 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.008] - 2026-07-19
+
+### Fixed
+
+- Fit-to-stations now re-measures the map before fitting (handles a
+  just-resized/rotated map) and caps the zoom at 15 so a lone station doesn't
+  slam to street level.
+
 ## [2026.07.19.007] - 2026-07-19
 
 ### Added
