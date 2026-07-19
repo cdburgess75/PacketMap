@@ -60,7 +60,9 @@ const dom = new JSDOM(html, {
     Object.defineProperty(w, "localStorage", { value: store, configurable: true });
     w.matchMedia = () => ({ matches: false, addEventListener: () => {}, removeEventListener: () => {} });
     w.fetch = () => Promise.resolve({ ok: true, text: () => Promise.resolve(""), json: () => Promise.resolve({}) });
-    // no WebSocket / geolocation / indexedDB: the app must degrade gracefully
+    // jsdom ships a real WebSocket; stub it so boot's auto-connect can't dial out during tests.
+    w.WebSocket = function () { this.binaryType = ""; this.readyState = 0; this.send = () => {}; this.close = () => { this.readyState = 3; }; };
+    // no geolocation / indexedDB: the app must degrade gracefully
   },
 });
 await new Promise(r => setTimeout(r, 400));

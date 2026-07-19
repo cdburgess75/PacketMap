@@ -3,6 +3,28 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.001] - 2026-07-19
+
+### Added
+
+- Direct APRS-IS connection over WebSocket with **no bridge to host**: the app
+  ships a built-in default endpoint (`wss://ametx.com:8888`, a javAPRSSrvr TLS
+  WebSocket port on the APRS-IS network) and connects out of the box.
+- Endpoint failover: the client rotates through an ordered list of servers,
+  advancing past any that fail to connect and sticking with one once logged in.
+
+### Changed
+
+- The SETUP "Bridge URL" field is now an optional "Server" override (a custom
+  `wss://` APRS-IS endpoint or your own Cloudflare Worker); leaving it blank uses
+  the built-in direct feed. The Worker bridge remains fully supported.
+- CSP `connect-src` now allows `wss://ametx.com:8888`.
+
+### Notes
+
+- `wss://ametx.com:8888` is currently the only verified browser-trusted APRS-IS
+  WebSocket endpoint; the failover list is ready to hold more as they appear.
+
 ## [2026.07.16.003] - 2026-07-16
 
 ### Added

@@ -7,7 +7,7 @@
 **A live APRS map with your GPS position, SmartBeaconing, and two-way messaging - in a single-file PWA that installs from the browser, works offline, and needs no account.**
 
 [![smoke tests](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml/badge.svg)](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml)
-[![version](https://img.shields.io/badge/version-2026.07.16.003-f0923c?style=flat-square)](https://github.com/cdburgess75/PacketMap/commits/main)
+[![version](https://img.shields.io/badge/version-2026.07.19.001-f0923c?style=flat-square)](https://github.com/cdburgess75/PacketMap/commits/main)
 [![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-2E8B7A?style=flat-square)](#architecture)
 [![license](https://img.shields.io/badge/license-MIT-8bb4e8?style=flat-square)](LICENSE)
 
@@ -45,7 +45,7 @@ Part of the same family as [PileUp](https://github.com/cdburgess75/PileUp) (POTA
 | Watching the network usually means being invisible on it | Enter your callsign and flip **Transmit**: SmartBeaconing puts you on the air (and on aprs.fi) from your phone's GPS |
 | Web maps show positions but hide the protocol | Tap any station for its decoded weather, course, altitude - and the raw packet; the RAW tab streams the live feed |
 | Messaging needs a radio or a paid app | Full two-way APRS messaging with automatic acks and retries, right from the map |
-| Browsers can't speak the APRS-IS TCP protocol | A ~70-line Cloudflare Worker (free tier) pipes WebSocket to TCP; all APRS logic stays in the app |
+| Browsers can't speak the APRS-IS TCP protocol | It connects straight to a native APRS-IS WebSocket endpoint - no bridge to host; a self-hosted Cloudflare Worker stays as an optional fallback |
 
 **Why it stands out:** the entire application is one HTML file with zero runtime dependencies - no framework, no bundler, no build step, no account, no tracking. Your callsign, tracks, and messages never leave your device except as the packets you deliberately transmit.
 
@@ -76,19 +76,23 @@ Part of the same family as [PileUp](https://github.com/cdburgess75/PileUp) (POTA
 
 ## How it connects
 
-Browsers cannot open TCP sockets, and APRS-IS speaks a plain-text TCP protocol. PacketMap's answer is the thinnest possible bridge:
+Browsers can't open TCP sockets, and the core APRS-IS pool (`rotate.aprs2.net:14580`) is plain-text TCP only. But APRS-IS servers running `javAPRSSrvr` expose a **native WebSocket port**, and at least one serves it over **TLS** - so PacketMap connects straight to the network with **nothing to host**:
 
 ```
-┌─────────────────┐   WebSocket (wss)   ┌───────────────────┐    TCP :14580    ┌──────────────┐
-│  PacketMap PWA  │ ◄─────────────────► │ Cloudflare Worker │ ◄──────────────► │   APRS-IS    │
-│  (your browser) │    raw byte pipe    │   (free tier)     │                  │ rotate.aprs2 │
-└─────────────────┘                     └───────────────────┘                  └──────────────┘
-   login · filters · parsing · TX            no APRS logic                      world feed
+┌─────────────────┐   WebSocket (wss)   ┌────────────────────────────┐
+│  PacketMap PWA  │ ◄─────────────────► │   APRS-IS  (javAPRSSrvr)    │
+│  (your browser) │  login · filter ·   │   wss://ametx.com:8888      │
+└─────────────────┘  parse · TX         │   a node on the world feed  │
+                                         └────────────────────────────┘
 ```
 
-The Worker is a **dumb pipe**: the app itself sends the standard APRS-IS login, computes the passcode, manages the radius filter, and parses every packet - exactly as if it had a direct TCP connection. The upstream host is hardcoded in the Worker, so it cannot be abused as an open proxy.
+The app speaks the standard APRS-IS protocol itself - login, passcode computation, radius filter, packet parsing, and (with a callsign) transmit - directly over the WebSocket, exactly as it would over raw TCP. Receive-only needs no callsign and no account.
 
-Deploy your own bridge (free Cloudflare account, no credit card):
+**Failover & custom servers.** The built-in endpoint list is tried in order: the app skips any server it can't reach and stays put once logged in. **SETUP → Network → Server** overrides it with your own `wss://` APRS-IS endpoint - or a self-hosted bridge (below), which then takes priority with the built-in endpoint as backup. Leave it blank for the built-in direct feed.
+
+### Optional: self-hosted Cloudflare Worker
+
+Prefer not to depend on a public endpoint - or want the resilience of the round-robin `rotate.aprs2.net` pool? `worker/` is a ~70-line Cloudflare Worker (free tier) that pipes WebSocket to APRS-IS TCP. It's a **dumb pipe**: all APRS logic stays in the app, and the upstream host is hardcoded so it can't be abused as an open proxy.
 
 ```bash
 cd worker
@@ -96,7 +100,7 @@ npx wrangler login
 npx wrangler deploy
 ```
 
-Paste the printed URL (as `wss://packetmap-bridge.<you>.workers.dev`) into **SETUP → Network → Bridge URL**. For local development the app defaults to `ws://127.0.0.1:8787` (run `npx wrangler dev --local` in `worker/`).
+Paste the printed `wss://packetmap-bridge.<you>.workers.dev` URL into **SETUP → Network → Server**. On `localhost` the app uses `ws://127.0.0.1:8787` for development (run `npx wrangler dev --local` in `worker/`).
 
 ## Architecture
 
@@ -116,7 +120,7 @@ PacketMap/
 └── .github/workflows/smoke.yml  # CI - runs the smoke suite on every push and PR
 ```
 
-**Persistence:** settings in `localStorage`; track history, messages, and the raw log in IndexedDB. **Network access** is pinned by a `Content-Security-Policy` meta tag to exactly OSM tiles and the bridge.
+**Persistence:** settings in `localStorage`; track history, messages, and the raw log in IndexedDB. **Network access** is pinned by a `Content-Security-Policy` meta tag to exactly OSM tiles, the direct APRS-IS WebSocket endpoint(s), and any `*.workers.dev` bridge.
 
 ## Getting started
 
@@ -139,10 +143,10 @@ git clone https://github.com/cdburgess75/PacketMap.git
 cd PacketMap
 npm install                          # dev-only dependency: jsdom
 npx serve .                          # any static server works
-cd worker && npx wrangler dev --local  # local APRS-IS bridge on :8787
+cd worker && npx wrangler dev --local  # optional: local APRS-IS bridge on :8787
 ```
 
-Open `http://localhost:3000` - the app auto-connects to the local bridge and New Orleans traffic starts flowing (the default map center always has stations on the air).
+Open `http://localhost:3000`. With the local bridge running, the app connects to it automatically; otherwise point **Setup → Network → Server** at a `wss://` endpoint (e.g. the built-in `wss://ametx.com:8888`) to pull the direct feed. Either way, New Orleans traffic starts flowing - the default map center always has stations on the air.
 
 ## Using PacketMap
 
