@@ -3,6 +3,27 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.007] - 2026-07-19
+
+### Added
+
+- **Callsign labels toggle** — Setup → Map & display → show/hide the callsigns
+  beside station icons (labels were always on before).
+- **Icon size** — a slider (0.6×–2×) to scale station symbols for dense or
+  small-screen maps.
+- **Callsign search** — a search box on the map; type a call and press Enter to
+  jump to that station (Esc clears). Exact match wins, else first prefix match.
+- **Fit-to-stations** — a ⤢ map button that zooms to show every station on the
+  map (plus your position).
+- **Configurable fade** — the "stale" grayscale/fade timeout (30 min before) is
+  now adjustable under Map & display.
+
+### Notes
+
+- Ideas adapted (reimplemented from scratch, no code copied) from APRS-PropView's
+  map UX. RF/backend-only PropView features (digipeater, IGate, RF propagation
+  meters, analytics) do not apply to a browser APRS-IS app.
+
 ## [2026.07.19.006] - 2026-07-19
 
 ### Added
