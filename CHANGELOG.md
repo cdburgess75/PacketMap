@@ -3,6 +3,15 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.004] - 2026-07-19
+
+### Changed
+
+- When a GPS fix is the only thing left before you can transmit, tapping SEND NOW
+  now requests your location directly (from that tap, so the browser shows its
+  permission prompt) and beacons automatically the moment the fix lands — no need
+  to find the ◎ button first. If the location can't be obtained, it says so.
+
 ## [2026.07.19.003] - 2026-07-19
 
 ### Changed
