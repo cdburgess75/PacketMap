@@ -3,6 +3,16 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.009] - 2026-07-19
+
+### Changed
+
+- New app icon — a bold map pin on a faint grid, in yellow — replacing the old
+  pin-with-signal-arcs mark. Regenerated `icon.svg` and the PNGs
+  (`apple-touch-icon` 180, `icon-192`, `icon-512` incl. maskable), full-bleed so
+  iOS/Android apply their own corner rounding. Installed iOS home-screen
+  shortcuts must be deleted and re-added to pick up the new icon.
+
 ## [2026.07.19.008] - 2026-07-19
 
 ### Fixed

@@ -1,10 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="20" fill="#f0923c"/>
-  <g stroke="#161616" fill="none" stroke-linecap="round">
-    <path d="M50 76 C39.5 61.5 34 52.5 34 44 a16 16 0 1 1 32 0 C66 52.5 60.5 61.5 50 76 Z" stroke-width="6" stroke-linejoin="round"/>
-    <path d="M25 56 Q15 43 25 30" stroke-width="4.5" opacity=".85"/>
-    <path d="M75 56 Q85 43 75 30" stroke-width="4.5" opacity=".85"/>
-    <line x1="38" y1="84" x2="62" y2="84" stroke-width="4.5" opacity=".7"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="#f2c81e"/>
+  <g stroke="#26210a" fill="none">
+    <line x1="16" y1="40" x2="84" y2="40" stroke-width="2" opacity=".2"/>
+    <line x1="16" y1="66" x2="84" y2="66" stroke-width="2" opacity=".2"/>
+    <line x1="38" y1="14" x2="38" y2="86" stroke-width="2" opacity=".2"/>
+    <line x1="66" y1="14" x2="66" y2="86" stroke-width="2" opacity=".2"/>
   </g>
-  <circle cx="50" cy="43" r="5.5" fill="#161616"/>
+  <g transform="translate(50,80) scale(2.35)">
+    <path fill="#26210a" d="M0 0 C-6 -9 -10 -13 -10 -18 a10 10 0 1 1 20 0 C10 -13 6 -9 0 0 Z"/>
+    <circle fill="#f2c81e" cx="0" cy="-18" r="4.2"/>
+  </g>
 </svg>
