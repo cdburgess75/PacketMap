@@ -3,6 +3,17 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.006] - 2026-07-19
+
+### Added
+
+- Manual position: long-press the map (or right-click on desktop) and confirm to
+  set your position by hand — for beaconing when GPS is unavailable or blocked,
+  the way a fixed/home station works. Deliberate by design (a ~1-second hold plus
+  a confirmation) so a stray tap can't move you. Clears any accuracy circle and
+  drops a steady (non-pulsing) self dot; SmartBeaconing then treats it like any
+  fixed position.
+
 ## [2026.07.19.005] - 2026-07-19
 
 ### Changed
