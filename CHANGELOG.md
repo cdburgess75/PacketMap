@@ -3,6 +3,16 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.005] - 2026-07-19
+
+### Changed
+
+- Tapping SEND NOW without a callsign (or with Transmit off) now jumps straight
+  to the Setup tab and focuses the callsign field, instead of only flashing an
+  error banner.
+- Clearer guidance when a location request is blocked (permission denied) for the
+  site — the message points to the Settings reset rather than a generic error.
+
 ## [2026.07.19.004] - 2026-07-19
 
 ### Changed
