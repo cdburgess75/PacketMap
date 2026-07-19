@@ -3,6 +3,13 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.010] - 2026-07-19
+
+### Changed
+
+- Your GPS position marker — the self dot, its glow/pulse, and the accuracy
+  circle — is now coral red (`#fa5252`) instead of blue.
+
 ## [2026.07.19.009] - 2026-07-19
 
 ### Changed
