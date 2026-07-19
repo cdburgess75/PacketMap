@@ -3,6 +3,16 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.003] - 2026-07-19
+
+### Changed
+
+- SEND NOW is no longer a dead greyed-out button when you can't yet transmit. It
+  stays visible and tappable; tapping it while not ready shows exactly what's
+  still needed (e.g. "To beacon: turn on Transmit · set your callsign · enable
+  GPS (tap ◎)"), and its tooltip lists the same. It only actually beacons once
+  the TX gate is satisfied (Transmit on + callsign verified + GPS fix + connected).
+
 ## [2026.07.19.002] - 2026-07-19
 
 ### Added
