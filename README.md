@@ -7,7 +7,7 @@
 **A live APRS map with your GPS position, SmartBeaconing, and two-way messaging - in a single-file PWA that installs from the browser, works offline, and needs no account.**
 
 [![smoke tests](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml/badge.svg)](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml)
-[![version](https://img.shields.io/badge/version-2026.07.19.001-f0923c?style=flat-square)](https://github.com/cdburgess75/PacketMap/commits/main)
+[![version](https://img.shields.io/badge/version-2026.07.19.002-f0923c?style=flat-square)](https://github.com/cdburgess75/PacketMap/commits/main)
 [![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-2E8B7A?style=flat-square)](#architecture)
 [![license](https://img.shields.io/badge/license-MIT-8bb4e8?style=flat-square)](LICENSE)
 

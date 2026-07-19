@@ -3,6 +3,19 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.002] - 2026-07-19
+
+### Added
+
+- Tap ◎ to actively request GPS. If the automatic location prompt at load was
+  dismissed or blocked, ◎ now re-requests it from a user gesture (via
+  `getCurrentPosition`) and starts the continuous watch, instead of requiring a
+  page reload. Once a fix exists, ◎ toggles follow-me as before.
+
+### Changed
+
+- ◎ button tooltip is now "Find / follow my position".
+
 ## [2026.07.19.001] - 2026-07-19
 
 ### Added
