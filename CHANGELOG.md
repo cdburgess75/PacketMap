@@ -3,6 +3,20 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.012] - 2026-07-19
+
+### Added
+
+- Full-screen map (⛶) now works in **any orientation** and holds a **Screen Wake
+  Lock** so the display won't time out while it's on.
+- **Font changer** — an "Aa" button (top-right) cycling Mono / Sans / Rounded / Serif.
+
+### Changed
+
+- Header theme/font controls are now clear rounded buttons; the theme toggle shows
+  an **orange sun** (tap → light) or a **blue moon** (tap → dark).
+- Bottom tab-bar labels are larger and readable (7.5px → 11px; icons 16 → 20px).
+
 ## [2026.07.19.011] - 2026-07-19
 
 ### Fixed
