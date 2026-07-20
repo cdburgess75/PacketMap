@@ -3,6 +3,18 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.20.002] - 2026-07-20
+
+### Changed
+
+- **Your own marker now shows your APRS symbol** (the one you pick in Setup),
+  ringed and pulsing coral so it still reads as "you" — instead of a plain coral
+  dot. It updates live when you change your symbol. (Your beacon already
+  transmitted the selected symbol; this makes the map match.)
+- **Messages and Raw tabs are now full-screen** — the header is hidden on those
+  two tabs so the conversation/packet list uses the whole height (the bottom tab
+  bar stays for navigation). Content drops below the notch on installed iPhones.
+
 ## [2026.07.20.001] - 2026-07-20
 
 ### Changed
