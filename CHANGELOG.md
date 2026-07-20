@@ -3,6 +3,14 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.013] - 2026-07-19
+
+### Fixed
+
+- The font changer no longer restyles the RAW packet console — packets stay
+  monospace (terminal-aligned) whatever UI font you pick. The changer still
+  applies to the rest of the app and persists across reloads.
+
 ## [2026.07.19.012] - 2026-07-19
 
 ### Added
