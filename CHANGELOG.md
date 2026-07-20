@@ -3,6 +3,16 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.20.001] - 2026-07-20
+
+### Changed
+
+- **Brighter map** — dark-mode tiles go from brightness .72 → .92 (and a bit more
+  saturation); light mode gets a slight saturation/contrast boost too.
+- **Larger text** in the **Messages** and **RAW** tabs for readability.
+- **Tighter header and bottom tab bar** — trimmed padding so less vertical space
+  is wasted and the map gets more room.
+
 ## [2026.07.19.014] - 2026-07-19
 
 ### Added
