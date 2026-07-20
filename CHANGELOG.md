@@ -3,6 +3,19 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.19.014] - 2026-07-19
+
+### Added
+
+- **Text size** control: the header **aA** button cycles **Small / Medium / Large**,
+  scaling the UI (header, tabs, panels, map controls) while keeping the map itself
+  crisp at its natural scale.
+
+### Changed
+
+- The typeface picker (Mono / Sans / Rounded / Serif) moved from the header into
+  **Setup → Map & display**, so the header button is dedicated to text size.
+
 ## [2026.07.19.013] - 2026-07-19
 
 ### Fixed
