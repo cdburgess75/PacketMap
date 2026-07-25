@@ -6,12 +6,12 @@
 
 **A live APRS map with your GPS position, SmartBeaconing, and two-way messaging — in a single HTML file that installs from the browser, works offline, and needs no account.**
 
-[![live demo](https://img.shields.io/badge/demo-live-2E8B7A?style=flat-square&logo=leaflet&logoColor=white)](https://cdburgess75.github.io/PacketMap/)
+[![live demo](https://img.shields.io/badge/demo-live-106652?style=flat-square&logo=leaflet&logoColor=white)](https://cdburgess75.github.io/PacketMap/)
 [![smoke tests](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml/badge.svg)](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml)
-[![version](https://img.shields.io/badge/version-2026.07.25.002-f0923c?style=flat-square)](CHANGELOG.md)
-[![PWA](https://img.shields.io/badge/PWA-installable_%C2%B7_offline-f0923c?style=flat-square)](#install)
-[![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-2E8B7A?style=flat-square)](#tech-stack)
-[![license](https://img.shields.io/badge/license-MIT-8bb4e8?style=flat-square)](LICENSE)
+[![version](https://img.shields.io/badge/version-2026.07.25.002-D46900?style=flat-square)](CHANGELOG.md)
+[![PWA](https://img.shields.io/badge/PWA-installable_%C2%B7_offline-D46900?style=flat-square)](#install)
+[![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-106652?style=flat-square)](#tech-stack)
+[![license](https://img.shields.io/badge/license-MIT-1061CC?style=flat-square)](LICENSE)
 
 ### [▶ Open the live app](https://cdburgess75.github.io/PacketMap/)
 
