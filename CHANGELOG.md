@@ -3,6 +3,27 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.25.001] - 2026-07-25
+
+### Changed
+
+- **New "deep obsidian" color system.** Replaced the flat pure-black surfaces
+  with layered obsidian tones (`#090B10` canvas through `#22283A` raised states),
+  shifted the muted teal greens to crisp tactical mint/emerald, and refreshed the
+  amber, blue and red accents. The light theme was re-derived for higher-contrast
+  text on white.
+- **Live/status greens now use the bright mint** (`#40ECC1`) — connection LED, TX
+  badge, "follow me" button, update banner, focus rings and checkboxes — so they
+  stay legible in both themes; the deep emerald (`#106652`) is reserved for
+  grounding fills. This also fixes would-be invisible pale-mint indicators in the
+  light theme.
+- **Signature effects tuned to the new palette** — softer amber logo glow, denser
+  CRT scanlines, and darker/desaturated map tiles so the neon markers stand out
+  against the basemap.
+- **New `--map-bg` and `--self-marker` tokens** wire the Leaflet canvas and your
+  own GPS marker into the palette (the self-marker is unified with the red
+  accent). Mobile browser `theme-color` follows the new backgrounds.
+
 ## [2026.07.20.002] - 2026-07-20
 
 ### Changed
