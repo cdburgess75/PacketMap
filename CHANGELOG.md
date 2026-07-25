@@ -26,6 +26,10 @@ use the repo scheme `YYYY.MM.DD.NNN`.
 - **Primary button text is near-black on amber** (was white), so the main
   call-to-action clears WCAG AA in both themes (AAA in dark). Amber is a light
   hue in both themes, so dark ink reads far better on it than white.
+- **App icon and favicon recolored** to the new scheme — amber ground with an
+  obsidian pin (regenerated at 180 / 192 / 512). The manifest splash/theme
+  colors move to `#090B10` and the icon cache-bust bumps to `?v=3`, so
+  home-screen installs and bookmarks pick up the new icon.
 
 ## [2026.07.20.002] - 2026-07-20
 
