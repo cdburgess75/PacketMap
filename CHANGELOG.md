@@ -23,6 +23,9 @@ use the repo scheme `YYYY.MM.DD.NNN`.
 - **New `--map-bg` and `--self-marker` tokens** wire the Leaflet canvas and your
   own GPS marker into the palette (the self-marker is unified with the red
   accent). Mobile browser `theme-color` follows the new backgrounds.
+- **Primary button text is near-black on amber in dark mode** (was white), so the
+  main call-to-action clears WCAG AA — matching the existing "follow me" button.
+  Light theme keeps white on its darker burnt-orange amber.
 
 ## [2026.07.20.002] - 2026-07-20
 
