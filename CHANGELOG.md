@@ -3,6 +3,16 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.25.002] - 2026-07-25
+
+### Fixed
+
+- **Home-screen / PWA icons render correctly again.** In 2026.07.25.001 the
+  180 px and 192 px icons shipped as a solid amber square — the pin failed to
+  paint while the PNGs were being generated. Regenerated every icon size so the
+  obsidian pin is back, and bumped the icon cache-bust to `?v=4` so installed
+  home screens and bookmarks re-fetch the corrected art.
+
 ## [2026.07.25.001] - 2026-07-25
 
 ### Changed
