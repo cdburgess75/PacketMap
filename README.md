@@ -101,17 +101,19 @@ The app speaks the standard APRS-IS protocol itself — login, passcode, radius 
 
 ## Install
 
-Open **<https://cdburgess75.github.io/PacketMap/>** — that's the whole install. To pin it as an app:
+Open **<https://cdburgess75.github.io/PacketMap/>** — that's the whole install. No app store, no account, no signing: PacketMap installs straight from the browser on every platform.
 
 | Platform | Steps |
 |---|---|
+| Windows / Linux / macOS | Chrome or Edge → **install icon** (⊕/💻) at the right end of the address bar → Install. PacketMap becomes a real windowed app with its own taskbar / dock / Start-menu entry, launchable offline. |
+| Android | Chrome → ⋮ → **Add to Home screen** (or the "Install app" prompt). Runs full-screen like a native app. |
 | iOS / iPadOS | Safari → Share → **Add to Home Screen** |
-| Android | Chrome → ⋮ → **Add to Home Screen** |
-| Desktop | Chrome / Edge → install icon in the address bar |
+
+**Desktop is a first-class home.** Unlike a phone, a desktop OS doesn't suspend background windows — an installed PacketMap holds its APRS-IS connection all day as a monitoring station. No GPS on your desktop? Long-press (or click-hold) the map to set your position by hand, and beacon from there.
 
 ## Using PacketMap
 
-Four tabs along the bottom — **⌖ Map**, **✉ Msgs**, **∿ Raw**, **⚙ Setup**. The **AA** button cycles text size; the ☀ / ☾ button flips light / dark.
+Five tabs along the bottom — **⌖ Map**, **☰ Heard**, **✉ Msgs**, **∿ Raw**, **⚙ Setup**. The **AA** button cycles text size; the ☀ / ☾ button flips light / dark.
 
 **First run.** Allow the location prompt so the map centres on you and the feed follows your GPS. (No prompt, or blocked? Tap the ◎ button on the map to request it, or long-press the map to set your position by hand.)
 
