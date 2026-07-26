@@ -8,7 +8,7 @@
 
 [![live demo](https://img.shields.io/badge/demo-live-106652?style=flat-square&logo=leaflet&logoColor=white)](https://cdburgess75.github.io/PacketMap/)
 [![smoke tests](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml/badge.svg)](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml)
-[![version](https://img.shields.io/badge/version-2026.07.26.001-D46900?style=flat-square)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2026.07.26.002-D46900?style=flat-square)](CHANGELOG.md)
 [![PWA](https://img.shields.io/badge/PWA-installable_%C2%B7_offline-D46900?style=flat-square)](#install)
 [![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-106652?style=flat-square)](#tech-stack)
 [![license](https://img.shields.io/badge/license-MIT-1061CC?style=flat-square)](LICENSE)
@@ -65,14 +65,19 @@ The whole application is **one `index.html` file** with zero runtime dependencie
 | Area | What it does |
 |---|---|
 | **Live map** | Real-time APRS-IS feed on OpenStreetMap with authentic APRS symbols; the server-side filter follows your GPS. Adjustable feed radius (10–500 km), callsign-label toggle, icon-size slider, callsign search, and one-tap fit-to-stations. |
+| **Heard list** | A sortable roster of every station on the map — by distance, recency or callsign — with symbol, distance and bearing, speed and comment. Filter as you type; tap a row to jump to it on the map. Often faster than hunting for an icon. |
 | **Your position** | Live self-marker that shows *your* selected APRS symbol inside a coral "you" ring, with accuracy circle and follow-me mode. No GPS? Long-press the map to set your position by hand. |
 | **Beaconing** | SmartBeaconing (speed-scaled rate + corner pegging — ~20 min parked, up to once a minute at highway speed), one-tap **SEND NOW**, a master Transmit switch, and configurable symbol / SSID / comment. Your APRS-IS passcode is computed automatically from your callsign. |
 | **Messaging** | Conversation threads per callsign, 67-char composer, automatic `{id}` sequencing, retries until acked (3× / 30 s), incoming auto-ack, and unread badges. |
-| **Station detail** | Distance and bearing from you, course / speed / altitude, decoded weather (temp, wind, rain, barometer), status text, and the raw packet. |
-| **Track tails** | Colour-coded polylines for moving stations, persisted on-device (IndexedDB, 7-day retention) and re-seeded on launch. |
+| **Station detail** | Distance and bearing from you, course / speed / altitude, advertised range, decoded weather, status text, and the raw packet — plus one-tap **navigate** (Apple/Google Maps), **share**, and **GPX** export of that station's track. |
+| **Weather history** | Weather stations get 24-hour sparklines for temperature, barometer, wind and humidity, drawn inline from on-device history — no chart library, no server. |
+| **NWS alerts** | Active US National Weather Service watches and warnings drawn as severity-coloured polygons. Alerts covering *your* position are drawn solid and raise a notification; the rest of your state is dashed. Optional, US only. |
+| **Map intelligence** | Range circles from a station's own PHG / RNG data, and dead-reckoned ghost markers projecting where a moving station should be now. Both toggleable. |
+| **Bulletins** | `BLN0`–`BLN9` / `BLNA`–`BLNZ` broadcasts — net announcements, club notices, relayed weather — collected at the top of Messages, keyed by sender and slot. |
+| **Track tails** | Colour-coded polylines for moving stations, persisted on-device (IndexedDB, 7-day retention), re-seeded on launch, and exportable as GPX. |
 | **Watchlist** | Star callsigns (prefix `*` supported); a banner and optional system notification fire when they're heard or message you. |
 | **Raw console** | Full-screen live packet stream with filter, pause, and a 2000-line ring buffer — the whole protocol, visible. |
-| **Packet parser** | Uncompressed, compressed (base91), Mic-E, objects, items, weather, status, and messages — all decoded in the browser. |
+| **Packet parser** | Uncompressed, compressed (base91), Mic-E, objects, items, weather, status, messages, bulletins, PHG/RNG, and the `!DAO!` precision addendum — all decoded in the browser. |
 | **Interface** | Dark and light themes, small / medium / large text sizing, a full-screen map with screen-wake-lock, and full-screen Messages / Raw tabs. |
 | **Offline** | Service-worker shell cache, OSM tile cache (1500 tiles, trimmed oldest-first), and an update banner when a new release ships. |
 | **Privacy** | Receive-only mode needs no callsign at all; nothing leaves your browser unless you transmit. |
@@ -122,7 +127,8 @@ Four tabs along the bottom — **⌖ Map**, **✉ Msgs**, **∿ Raw**, **⚙ Set
 - **Vanilla JavaScript, HTML, and CSS** in a single `index.html` — no framework, no build step, zero runtime dependencies.
 - **[Leaflet 1.9.4](https://leafletjs.com/)** (vendored, BSD-2-Clause) with OpenStreetMap tiles.
 - **[hessu/aprs-symbols](https://github.com/hessu/aprs-symbols)** sprite sheets (CC BY 4.0) for authentic APRS iconography.
-- **Service Worker** for the offline app shell and tile cache; **IndexedDB** for track history, messages, and the raw log; **localStorage** for settings.
+- **Service Worker** for the offline app shell and tile cache; **IndexedDB** for track history, weather history, messages, and the raw log; **localStorage** for settings.
+- **[api.weather.gov](https://www.weather.gov/documentation/services-web-api)** (US National Weather Service) for active alert polygons — public, no API key, queried only when the feature is on and you have a GPS fix.
 - **Optional [Cloudflare Worker](worker/)** bridge (WebSocket ↔ APRS-IS TCP) for those who'd rather self-host the uplink.
 - **Node + jsdom** for the smoke suite, run in CI on every push via [GitHub Actions](.github/workflows/smoke.yml). The app itself needs nothing but a browser.
 

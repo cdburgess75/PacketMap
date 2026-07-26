@@ -3,6 +3,53 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.002] - 2026-07-26
+
+### Added
+
+- **Heard list — a new tab.** A sortable roster of every station on the map:
+  by distance, by recency, or alphabetically, with symbol, distance and
+  bearing, speed, comment and age. Filter as you type; tap a row to centre the
+  map on that station and open its detail panel. On a busy map — or in a moving
+  vehicle — this is usually faster than hunting for an icon.
+- **NWS weather alerts (US).** Active National Weather Service watches and
+  warnings are drawn as severity-coloured polygons from `api.weather.gov`,
+  refreshed every 10 minutes. An alert covering *your* position is drawn solid
+  and raises a banner plus a system notification; the rest of your state is
+  drawn dashed so you can see weather coming before it arrives. Off switches
+  cleanly in **Setup → Weather alerts**; no API key, no account, US only.
+- **Range circles.** Stations that advertise their own coverage via `PHG` or
+  `RNG` get a faint circle at that radius, using the standard APRS range
+  formula. Useful for seeing which digipeater should be hearing you.
+- **Dead reckoning.** Moving stations get a dashed ghost marker projecting
+  where they should be now, based on their last course and speed. Advances
+  between packets, gives up after 30 minutes of silence.
+- **Weather history graphs.** Weather stations now show 24-hour sparklines for
+  temperature, barometer, wind and humidity in the station panel, drawn from
+  on-device history — no chart library, no server. Observations are thinned to
+  one per five minutes and kept for three days.
+- **Bulletins.** `BLN0`–`BLN9` and `BLNA`–`BLNZ` broadcasts — net
+  announcements, club notices, relayed weather — are collected at the top of
+  Messages, keyed by sender and slot so a re-send replaces in place. Previously
+  these scrolled past in the raw console and were dropped.
+- **Navigate, share and GPX.** The station panel gained three actions: open the
+  station in Apple or Google Maps for driving directions, share its position
+  via the system share sheet (clipboard fallback), and export its track as
+  GPX. **Setup → Data** exports every stored track at once.
+
+### Changed
+
+- Parser now decodes the `!DAO!` precision addendum (both the human-readable
+  and base-91 forms), adding a third decimal of position accuracy where
+  stations send it, and strips the token from the displayed comment.
+- Parser now keeps `RNG` from uncompressed positions and decodes the radio-range
+  form of the compressed `cs` field, which was previously misread as
+  course/speed.
+- IndexedDB schema is now version 2, adding a `wx` store. The upgrade is
+  guarded so an existing database gains only what it is missing.
+- `Content-Security-Policy` gained `https://api.weather.gov` in `connect-src`
+  for the alerts feature.
+
 ## [2026.07.26.001] - 2026-07-26
 
 ### Fixed
