@@ -28,5 +28,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>PacketMap centres the map on you and, with Transmit on, beacons your position to the APRS network.</string>
 </dict>
 </plist>

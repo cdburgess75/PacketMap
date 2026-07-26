@@ -50,6 +50,34 @@ flutter run -d windows      # or linux, macos, android
 Linux desktop additionally needs GTK dev headers (`libgtk-3-dev` on Debian and
 friends); everything else is stock Flutter.
 
+macOS and iOS need Xcode, which cannot be scripted — install it from the Mac
+App Store (~15 GB), then:
+
+```sh
+sudo xcodebuild -license accept
+sudo xcode-select --install
+brew install cocoapods
+flutter doctor -v            # work whatever it still flags
+```
+
+## Platform capabilities
+
+These are already configured, and each one is silent-failure territory if it
+goes missing:
+
+| Platform | What it needed | Why |
+|---|---|---|
+| macOS | `com.apple.security.network.client` | The app is sandboxed. Without it the TCP connection to APRS-IS fails with no error — it just never connects. |
+| macOS | `NSLocationWhenInUseUsageDescription` + location entitlement | No prompt, no fix |
+| iOS | `NSLocation…UsageDescription` ×2 | iOS terminates an app that asks for location without a usage string |
+| iOS | `UIBackgroundModes: location` | Beaconing with the screen off. Expect to justify this at App Store review. |
+| Android | `INTERNET` | Without it there is no APRS-IS connection at all |
+| Android | fine/coarse + background location, foreground service | Position, and beaconing with the screen off |
+
+Android's `ACCESS_BACKGROUND_LOCATION` must be requested *after* foreground
+location has already been granted, and only alongside a running foreground
+service — Android rejects it otherwise.
+
 ## Tests
 
 ```sh
