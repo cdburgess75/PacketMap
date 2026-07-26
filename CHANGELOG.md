@@ -3,6 +3,45 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.005] - 2026-07-26
+
+### Fixed
+
+- **Messaging failed after the phone had been asleep.** Two devices could chat
+  fine, but once one had sat idle for a while its next message silently failed.
+
+  A phone suspends a backgrounded tab: timers stop, and the operating system
+  tears the socket down *without firing `onclose`*. On return, `readyState`
+  still read OPEN on a link that was gone, so `connected` stayed `true`,
+  `canTx()` passed, and `sendLine()` reported success — the packet went nowhere.
+  The message then sat "sending" through three retries before failing 90 s
+  later. Nothing revived the connection on wake either; the only
+  `visibilitychange` handler in the app was for the screen wake lock.
+
+  Three changes:
+  - Returning to the foreground (also `online`, and a back/forward cache
+    restore) now checks the link instead of trusting it, and reconnects
+    immediately — resetting the backoff so a wake never waits out a stale 30 s
+    timer, and not waiting for the 90 s stale-feed watchdog.
+  - `sendLine()` no longer treats "socket says OPEN" as proof. The server
+    keepalive is ~20 s, so silence past the watchdog's 90 s means the link is
+    dead; sends now report failure rather than vanishing.
+  - A message that cannot leave the device is deferred and retried every 5 s
+    for 30 s while the link comes back, instead of burning its three on-air
+    retries on sends that never went out. If it still can't go, it fails with
+    "not connected" rather than a silent timeout.
+- Refusals now say what is actually wrong. Trying to send with a dropped
+  connection said "enable TX (and callsign) to send", which was misleading; it
+  now lists the real blockers, and a failed send after all retries reports "no
+  ack from CALL".
+
+### Note
+
+Receiving while the app is in the background is not possible for a web app on
+iOS — the page is suspended, and APRS-IS does not store and forward. Messages
+sent to you while your phone is asleep are missed unless the sender's retries
+land after you return. PacketMap reconnects and catches up on wake.
+
 ## [2026.07.26.004] - 2026-07-26
 
 ### Added
