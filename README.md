@@ -41,20 +41,21 @@ The whole application is **one `index.html` file** with zero runtime dependencie
 
 <img src="docs/images/map-dark.png" alt="Live APRS map centered on your position" width="300">
 
-<sub>Live APRS map — stations around you, your own position as your APRS symbol</sub>
+<sub>Live APRS map — stations around you, your own position as your APRS symbol<br>
+<i>(the two map captures predate the Heard tab; the rest are current)</i></sub>
 
 <br><br>
 
 <table>
 <tr>
-<td align="center" width="33%"><img src="docs/images/station-detail.png" alt="Station detail panel with decoded weather and raw packet" width="230"><br><sub>Station detail: distance, weather, raw packet</sub></td>
+<td align="center" width="33%"><img src="docs/images/heard.png" alt="Heard list: every station sorted by distance" width="230"><br><sub>Heard list, sorted by distance</sub></td>
+<td align="center" width="33%"><img src="docs/images/station-detail.png" alt="Station detail panel with 24-hour weather history and raw packet" width="230"><br><sub>Station detail: 24 h weather history</sub></td>
 <td align="center" width="33%"><img src="docs/images/messages.png" alt="Two-way APRS messaging thread" width="230"><br><sub>Two-way messaging with acks</sub></td>
-<td align="center" width="33%"><img src="docs/images/raw-console.png" alt="Live raw packet console" width="230"><br><sub>Live raw packet console</sub></td>
 </tr>
 <tr>
+<td align="center" width="33%"><img src="docs/images/raw-console.png" alt="Live raw packet console" width="230"><br><sub>Live raw packet console</sub></td>
 <td align="center" width="33%"><img src="docs/images/setup.png" alt="Setup: callsign, symbol, transmit, network" width="230"><br><sub>Setup: callsign, symbol, transmit</sub></td>
 <td align="center" width="33%"><img src="docs/images/map-light.png" alt="Light theme map" width="230"><br><sub>Light theme</sub></td>
-<td align="center" width="33%"></td>
 </tr>
 </table>
 
