@@ -3,6 +3,30 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.001] - 2026-07-26
+
+### Fixed
+
+- **Transmit works again on the direct APRS-IS feed.** Position beacons,
+  outgoing messages and message acks were built correctly but silently
+  discarded by the server, so nothing you sent ever reached the network — while
+  receive, login and verification all looked perfectly healthy.
+
+  Since 2026.07.19.001 the app connects straight to a native javAPRSSrvr
+  WebSocket, which carries **one record per frame with no line terminator**;
+  only the Cloudflare Worker bridge relays the CRLF-delimited TCP stream. The
+  receive path was taught both framings at the time, but the send path kept
+  appending `CRLF` unconditionally. On a frame-per-record link those two bytes
+  land *inside* the record, and APRS-IS drops any record containing control
+  characters — so every transmitted packet was thrown away without an error.
+  The local RAW echo logs the record before the terminator is added, which is
+  why the packets looked flawless on screen.
+
+  Outgoing records are now framed to match the transport the connection is
+  actually using, detected from the first inbound data exactly like the receive
+  path. The login line keeps its `CRLF` (framing is not yet known when it is
+  sent, and both transports accept it).
+
 ## [2026.07.25.002] - 2026-07-25
 
 ### Fixed
