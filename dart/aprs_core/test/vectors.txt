@@ -1,0 +1,57 @@
+# Shared parser vectors: parsed by BOTH the PWA (index.html) and aprs_core,
+# then compared field by field. Blank lines and #-comments are ignored.
+# Any packet that ever caused a bug belongs here.
+
+# --- uncompressed positions ---
+N5YHM-1>APN391,TANGI-1*,WIDE3-2,qAO,KF5VOI:!3028.26N/09002.60W#PHG5130 Abita Springs, LA
+W5LA-1>APRS,TCPIP*:=3038.10N/09018.00W-RNG0025 Mid-City home
+W5CMM-9>APRS,TCPIP*:!3035.00N/09015.00W>090/045 rolling east
+KF5X-9>APRS,TCPIP*:!2954.90N/09005.70W>180/031 Garden District mobile
+W5ALT-1>APRS,TCPIP*:!3030.00N/09010.00W-/A=000350 on the hill
+AE5NO-9>APRS,TCPIP*:!3001.60N/09001.20W>045/055 rolling toward Slidell
+
+# --- position ambiguity (spaces read as cell centre) ---
+W5AMB-1>APRS,TCPIP*:!30 8.  N/090 8.  W- ambiguous to the tenth
+
+# --- !DAO! precision addendum, both forms ---
+KG5ABC-7>APRS,TCPIP*:!3037.00N/09017.00W[ walking !W54! the levee
+KG5DAO-1>APRS,TCPIP*:!3037.00N/09017.00W[ base91 dao !w%X! here
+
+# --- timestamped position ---
+KE5TS-1>APRS,TCPIP*:@170005z3040.00N/09020.00W-timestamped position
+
+# --- weather ---
+KE5JZM-1>APN000,TCPIP*,qAC,T2PANAMA:@170005z3002.62N/09041.96W_047/001g004t079r000p000P000b10184h61L032eMB64
+KE5JZM-1>APN000,TCPIP*:@170005z3040.00N/09020.00W_047/003g007t079r000p000b10184h61 WX
+W5WX-1>APRS,TCPIP*:_10090556c220s004g005t077r000p000P000h50b09900
+
+# --- compressed (base91), incl. a-j digit overlay ---
+W5CMP-1>APRS,TCPIP*:!/5L!!<*e7> sTComment
+W5OVL-1>APRS,TCPIP*:!a5L!!<*e7> sTOverlay digit
+
+# --- Mic-E ---
+W5CMM>SPPP5V,WIDE1-1,WIDE2-1,qAR,W4NDF:`va9lT)k/`"4G}444.000MHz T114 +500 Chris-Mobile_%
+W4LVH-7>SPRS2Q,TANGI-1,WIDE1*,WIDE2-1,qAR,KJ5HTB-2:`vZ:l !k[/`"3
+
+# --- messages, acks, rejects, bulletins ---
+W5ABC>APRS,TCPIP*::KG5XYZ-9 :hello there{42
+KG5XYZ-9>APRS,TCPIP*::W5ABC    :ack42
+KG5XYZ-9>APRS,TCPIP*::W5ABC    :rej42
+W5ABC>APRS,TCPIP*::KG5XYZ-9 :no id on this one
+W5NET-1>APRS,TCPIP*::BLN1     :Parish net tonight 1900 on 146.520
+W5NET-1>APRS,TCPIP*::BLNA     :Skywarn activated for Tangipahoa
+
+# --- objects and items ---
+W5OBJ-1>APRS,TCPIP*:;LEADER   *092345z3030.00N/09010.00W>088/036 object
+W5OBJ-1>APRS,TCPIP*:;LEADER   _092345z3030.00N/09010.00W>killed object
+W5ITM-1>APRS,TCPIP*:)AID#2!3030.00N/09010.00Wa item report
+
+# --- status and D-STAR style ---
+W5STA-1>APRS,TCPIP*:>Monitoring 146.520
+AI5AK-B>APDG02,TCPIP*,qAC,AI5AK-BS:!3027.60ND09009.78W&RNG0001/A=000010 70cm Voice (D-Star) 433.10000MHz
+
+# --- malformed / defensive ---
+NOHEADER
+W5BAD-1>APRS,TCPIP*:
+W5BAD-2>APRS,TCPIP*:!short
+W5BAD-3>APRS,TCPIP*::tooshort

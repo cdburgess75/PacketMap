@@ -1,0 +1,14 @@
+name: aprs_core
+description: >-
+  APRS protocol core for the PacketMap Flutter port: packet parser
+  (uncompressed, compressed, Mic-E, objects/items, weather, messages,
+  bulletins, DAO), APRS-IS login/passcode, TX frame builders,
+  SmartBeaconing, and stream framing. Pure Dart, zero dependencies.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+# Intentionally no dependencies — mirrors the PWA's zero-dependency rule.
+# Tests are plain Dart: `dart test/run_tests.dart` (no pub get needed).
