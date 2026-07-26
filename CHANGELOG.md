@@ -3,6 +3,24 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.003] - 2026-07-26
+
+### Fixed
+
+- **Header no longer overlaps itself on wide screens.** On a desktop or tablet
+  the TX badge collided with the theme toggle in the top-right corner. The
+  control buttons were positioned absolutely, with only the brand row reserving
+  space for them — on a phone the brand wraps to two lines and pushes the
+  status row clear, but on a wide screen it fits on one line and the status row
+  rode up underneath the buttons.
+
+  The header is now a two-column grid — brand and status stacked on the left,
+  the buttons spanning both rows on the right — so the rows cannot collide at
+  any width, text size or font, rather than relying on a breakpoint that the
+  text-size control and font picker could invalidate. Verified clean across 54
+  combinations (9 widths × 3 text sizes × 2 themes). As a side effect the phone
+  header is slightly more compact, since the brand no longer needs to wrap.
+
 ## [2026.07.26.002] - 2026-07-26
 
 ### Added

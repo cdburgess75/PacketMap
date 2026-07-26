@@ -8,7 +8,7 @@
 
 [![live demo](https://img.shields.io/badge/demo-live-106652?style=flat-square&logo=leaflet&logoColor=white)](https://cdburgess75.github.io/PacketMap/)
 [![smoke tests](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml/badge.svg)](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml)
-[![version](https://img.shields.io/badge/version-2026.07.26.002-D46900?style=flat-square)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2026.07.26.003-D46900?style=flat-square)](CHANGELOG.md)
 [![PWA](https://img.shields.io/badge/PWA-installable_%C2%B7_offline-D46900?style=flat-square)](#install)
 [![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-106652?style=flat-square)](#tech-stack)
 [![license](https://img.shields.io/badge/license-MIT-1061CC?style=flat-square)](LICENSE)
