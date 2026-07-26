@@ -3,6 +3,36 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.004] - 2026-07-26
+
+### Added
+
+- **Weather alerts now have standing UI.** Previously an alert covering you
+  raised a five-second toast and then vanished, leaving no way to see what was
+  active or re-read it — the wrong treatment for a safety feature. Now:
+  - A **bar pinned to the top of the map** for as long as an alert covers you,
+    tinted by severity and naming the most severe one. It can be dismissed with
+    ✕, and a newly issued alert brings it back. The search box and zoom control
+    shift down so nothing is hidden behind it.
+  - A **⚠ map button**, badged with the number of active alerts and turning red
+    when one covers you, that opens…
+  - …an **alert sheet** listing every active alert — event, area, expiry and
+    headline — ordered with the ones covering you first and most severe first,
+    each marked `HERE`. Tapping an alert frames its outline on the map.
+- Turning the feature off in Setup now clears the bar, button, sheet and
+  polygons together.
+
+### Fixed
+
+- The alert bar showed whichever alert the NWS happened to return first rather
+  than the most severe one, so a Tornado Warning would not have displaced a
+  Heat Watch already on screen. Both the bar and the list now rank by severity.
+
+### Changed
+
+- The transient toast for new alerts is gone; the standing bar replaces it. The
+  system notification on a newly issued alert is unchanged.
+
 ## [2026.07.26.003] - 2026-07-26
 
 ### Fixed
