@@ -1,0 +1,26 @@
+name: packetmap
+description: "Live APRS map with GPS beaconing and messaging"
+publish_to: 'none'
+version: 2026.7.26+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # The protocol layer, shared with the PWA and held to it by a parity harness.
+  aprs_core:
+    path: ../aprs_core
+  flutter_map: ^7.0.2      # OSM tiles + markers — the Leaflet equivalent
+  latlong2: ^0.9.1
+  geolocator: ^13.0.2      # GPS, including background location on Android
+  shared_preferences: ^2.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
