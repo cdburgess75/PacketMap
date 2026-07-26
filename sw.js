@@ -1,4 +1,4 @@
-const CACHE = "packetmap-2026.07.26.005";
+const CACHE = "packetmap-2026.07.26.006";
 const TILES = "packetmap-tiles";
 const TILE_LIMIT = 1500; // ~30 MB of OSM tiles, trimmed oldest-first
 const SHELL = [
@@ -31,11 +31,22 @@ self.addEventListener("activate", e => {
   );
 });
 
+// Enumerating a 1500-entry cache on every tile miss would mean ~30 full scans
+// for a single pan. Only sweep once per TRIM_EVERY misses, and never overlap.
+const TRIM_EVERY = 50;
+let sinceTrim = 0, trimming = false;
 async function trimTiles() {
-  const c = await caches.open(TILES);
-  const keys = await c.keys();
-  // cache.keys() is insertion-ordered: delete oldest entries first
-  for (let i = 0; i < keys.length - TILE_LIMIT; i++) c.delete(keys[i]);
+  if (++sinceTrim < TRIM_EVERY || trimming) return;
+  sinceTrim = 0;
+  trimming = true;
+  try {
+    const c = await caches.open(TILES);
+    const keys = await c.keys();
+    // cache.keys() is insertion-ordered: delete oldest entries first
+    for (let i = 0; i < keys.length - TILE_LIMIT; i++) c.delete(keys[i]);
+  } finally {
+    trimming = false;
+  }
 }
 
 self.addEventListener("fetch", e => {
@@ -59,8 +70,11 @@ self.addEventListener("fetch", e => {
   }
 
   if (url.origin !== self.location.origin) return;
+  // ignoreSearch: the page requests icons as "icon-192.png?v=4" for cache
+  // busting, but SHELL precaches the bare path. Without this the precache is
+  // never hit and a cold offline start has no icons.
   e.respondWith(
-    caches.match(e.request).then(cached => {
+    caches.match(e.request, { ignoreSearch: true }).then(cached => {
       const network = fetch(e.request).then(res => {
         if (res.ok) {
           const clone = res.clone();

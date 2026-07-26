@@ -3,6 +3,45 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.006] - 2026-07-26
+
+Findings from a full review of the app.
+
+### Fixed
+
+- **An outgoing message could say "sending" forever.** Messages were restored
+  from IndexedDB on launch, but the ack bookkeeping was not: `pendingAcks` came
+  back empty and no retry timer was re-armed. An ack for a message sent before
+  the app was closed matched nothing and was discarded, leaving it pending with
+  nothing left to resolve it — and phones kill PWAs constantly, so this was
+  reachable in ordinary use. Pending messages younger than five minutes now
+  restore their ack lookup so a late ack still lands; older ones are marked
+  failed, because no ack is coming and claiming otherwise is a lie.
+- `pendingAcks` entries for failed messages were never removed, so the map only
+  ever grew.
+- **The service worker's precache was never used.** `SHELL` caches
+  `icons/icon-192.png`, but the page and manifest request it as
+  `icons/icon-192.png?v=4`, and `caches.match` is query-sensitive — so every
+  precached icon missed and a cold offline start had none of them. Shell
+  lookups now use `ignoreSearch`.
+- **Tile cache trimming ran on every tile miss**, enumerating a 1500-entry
+  cache once per tile: a single pan could trigger ~30 full scans. It now sweeps
+  once per 50 misses, and never overlaps itself.
+- The callsign field was capped at six characters. That is the AX.25 limit, but
+  APRS-IS accepts longer source callsigns, so special-event and some
+  international calls could not be entered at all. Raised to nine.
+- `myCall()` compared the SSID as a string, so a numeric `0` arriving from
+  edited or imported settings would have transmitted as `CALL-0`.
+
+### Changed
+
+- Message timestamps show a date when the message is not from today; a thread
+  from last night no longer reads as if it happened this morning.
+- Purely cosmetic timers — the Heard list refresh, dead-reckoning ghosts,
+  bulletin ageing and marker restyling — now idle while the app is off-screen
+  and catch up when it returns. Station pruning still runs, since that bounds
+  memory.
+
 ## [2026.07.26.005] - 2026-07-26
 
 ### Fixed
