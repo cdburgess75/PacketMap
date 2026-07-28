@@ -3,6 +3,31 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.008] - 2026-07-26
+
+### Fixed
+
+- **The app could quietly never update.** The update banner hid itself after
+  eight seconds, and it was the only way to apply an update. The check runs at
+  launch, so on a phone the banner routinely appeared and vanished before
+  anyone saw it — leaving the installed app on an old version indefinitely,
+  with no way to move it forward and nothing on screen to explain why.
+
+  Same mistake as the weather toast: an update is not a transient
+  notification. The banner now stays until it is applied or dismissed.
+- **Setup → Version → CHECK FOR UPDATE**, so a missed banner is never a dead
+  end. It reports what it found rather than going quiet: *update ready*,
+  *update found — installing…*, or *you're on the latest version*.
+- The check no longer claims you are current while an update is downloading.
+  `registration.update()` resolves when the *check* completes, not when the new
+  worker has installed, so `waiting` is usually still empty at that point; all
+  three states are now reported honestly.
+- The manual check no longer depends on the registration promise having
+  resolved. The first install claims the page and reloads it, so a tap could
+  land before that and report "updates unavailable"; it now falls back to
+  `getRegistration()`.
+- An update check now also runs at launch, not only when the tab regains focus.
+
 ## [2026.07.26.007] - 2026-07-26
 
 ### Added
