@@ -3,6 +3,26 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.007] - 2026-07-26
+
+### Added
+
+- **Forecast on demand, over APRS itself.** A **☀ FORECAST FOR MY LOCATION**
+  button in Messages sends your coordinates to [WXBOT](https://sites.google.com/site/ki6wjp/wxbot),
+  a long-running APRS-IS robot, and opens the thread; the forecast arrives as a
+  message reply and is auto-acked like any other.
+
+  It sends explicit decimal coordinates rather than letting WXBOT look up your
+  last beacon, so it works for a station that has never transmitted a position.
+  You can also just message `WXBOT` by hand with a city (`Hammond,LA`), a
+  Maidenhead grid (`EM50`), or an airport code for a METAR (`KMSY`).
+
+  No API, no key, and nothing added to the CSP — it is an ordinary APRS
+  message. The point is that this path works **over RF with no internet at
+  all**, which is the one thing `api.weather.gov` cannot do for you.
+
+  Also added to the Flutter build, so the two stay in step.
+
 ## [2026.07.26.006] - 2026-07-26
 
 Findings from a full review of the app.

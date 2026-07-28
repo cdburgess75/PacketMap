@@ -120,6 +120,26 @@ class MessagesPage extends StatelessWidget {
               ),
       ),
       Padding(
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          OutlinedButton(
+            onPressed: () {
+              if (state.askForecast()) openThread(context, state, AppState.wxbot);
+            },
+            child: const Text('☀ FORECAST FOR MY LOCATION',
+                style: TextStyle(fontSize: 11.5, letterSpacing: 1.2)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Text(
+              'Messages WXBOT, an APRS robot, with your coordinates; the forecast '
+              'comes back as a reply. Works over RF with no internet.',
+              style: TextStyle(fontSize: 11, color: dim, height: 1.4),
+            ),
+          ),
+        ]),
+      ),
+      Padding(
         padding: const EdgeInsets.all(10),
         child: Row(children: [
           Expanded(

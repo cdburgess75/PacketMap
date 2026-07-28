@@ -9,7 +9,7 @@ import 'message_store.dart';
 import 'settings.dart';
 import 'station_store.dart';
 
-const appVersion = '2026.07.26.006';
+const appVersion = '2026.07.26.007';
 
 /// Ties the pieces together: GPS in, APRS-IS in and out, beaconing on top.
 class AppState extends ChangeNotifier {
@@ -183,6 +183,22 @@ class AppState extends ChangeNotifier {
       cfg: settings.beacon,
     );
     if (due) sendBeacon();
+  }
+
+  /// WXBOT is a long-running APRS-IS robot: message it and it answers with a
+  /// forecast. We send explicit coordinates rather than letting it look up our
+  /// last beacon, so this works for a station that has never transmitted a
+  /// position — and it works over RF with no internet at all, which is the
+  /// whole reason to ask a radio robot instead of a weather API.
+  static const wxbot = 'WXBOT';
+  bool askForecast() {
+    final p = fix;
+    if (p == null) {
+      toast('waiting for a GPS fix');
+      return false;
+    }
+    return sendMessage(
+        wxbot, '${p.latitude.toStringAsFixed(4)}/${p.longitude.toStringAsFixed(4)}');
   }
 
   bool sendMessage(String peer, String text) {
