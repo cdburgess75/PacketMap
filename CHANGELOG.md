@@ -3,6 +3,19 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.009] - 2026-07-26
+
+### Changed
+
+- **The forecast button is on the map**, a **☀** above SEND NOW, where you'd
+  actually look for weather. Buried in Messages it was effectively hidden — you
+  had to already know it existed to find it. The Messages button stays for
+  anyone who has learned it.
+- Asking from the map now switches to Messages and opens the WXBOT thread, so
+  the reply arrives somewhere you can see it rather than silently behind
+  another tab.
+- Same button added to the Flutter build's map.
+
 ## [2026.07.26.008] - 2026-07-26
 
 ### Fixed

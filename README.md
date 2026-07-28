@@ -8,7 +8,7 @@
 
 [![live demo](https://img.shields.io/badge/demo-live-106652?style=flat-square&logo=leaflet&logoColor=white)](https://cdburgess75.github.io/PacketMap/)
 [![smoke tests](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml/badge.svg)](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml)
-[![version](https://img.shields.io/badge/version-2026.07.26.008-D46900?style=flat-square)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2026.07.26.009-D46900?style=flat-square)](CHANGELOG.md)
 [![PWA](https://img.shields.io/badge/PWA-installable_%C2%B7_offline-D46900?style=flat-square)](#install)
 [![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-106652?style=flat-square)](#tech-stack)
 [![license](https://img.shields.io/badge/license-MIT-1061CC?style=flat-square)](LICENSE)
@@ -74,7 +74,7 @@ The whole application is **one `index.html` file** with zero runtime dependencie
 | **Weather history** | Weather stations get 24-hour sparklines for temperature, barometer, wind and humidity, drawn inline from on-device history — no chart library, no server. |
 | **NWS alerts** | Active US National Weather Service watches and warnings drawn as severity-coloured polygons. Alerts covering *your* position are drawn solid, pin a standing bar to the top of the map, and raise a notification; the rest of your state is dashed. A ⚠ map button opens the full list — event, area, expiry and headline, worst first — and tapping one frames its outline. Optional, US only. |
 | **Map intelligence** | Range circles from a station's own PHG / RNG data, and dead-reckoned ghost markers projecting where a moving station should be now. Both toggleable. |
-| **Forecast on demand** | One tap messages **WXBOT**, a long-running APRS robot, with your coordinates; the forecast comes back as a message reply. Uses no API and no extra host — and over RF it works with no internet at all. |
+| **Forecast on demand** | The **☀** button on the map (or in Messages) sends your coordinates to **WXBOT**, a long-running APRS robot, and opens the thread; the forecast comes back as a message reply. No API and no extra host — and over RF it works with no internet at all. |
 | **Bulletins** | `BLN0`–`BLN9` / `BLNA`–`BLNZ` broadcasts — net announcements, club notices, relayed weather — collected at the top of Messages, keyed by sender and slot. |
 | **Track tails** | Colour-coded polylines for moving stations, persisted on-device (IndexedDB, 7-day retention), re-seeded on launch, and exportable as GPX. |
 | **Watchlist** | Star callsigns (prefix `*` supported); a banner and optional system notification fire when they're heard or message you. |

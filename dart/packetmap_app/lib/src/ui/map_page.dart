@@ -164,6 +164,13 @@ class MapPageState extends State<MapPage> {
                 },
               ),
               const SizedBox(height: 10),
+              _MapBtn(
+                icon: Icons.wb_sunny_outlined,
+                light: light,
+                tooltip: 'Ask WXBOT for a forecast here',
+                onTap: () => s.askForecast(),
+              ),
+              const SizedBox(height: 10),
               _SendNowBtn(state: s),
             ],
           ),
