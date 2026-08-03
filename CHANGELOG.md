@@ -3,6 +3,25 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.010] - 2026-07-26
+
+### Changed
+
+- **Driving mode is now one green button that says GO.** It was a grey `⛶`,
+  which told you nothing and looked like every other control — you had to
+  already know what it did. It is now the only solid colour on the map, reads
+  as a verb, and becomes **EXIT** while engaged.
+- **GO turns on follow-me by itself.** Entering driving mode and then having to
+  find a second button to make the map track you was friction at exactly the
+  wrong moment. One tap now gives full screen, follow-me, and the screen-wake
+  lock together, and asks for location if there is no fix yet.
+- **A one-time coach mark** points at GO a couple of seconds after the map
+  opens, explaining what it does. It aligns itself to the button from its
+  measured position, so it stays correct whether or not the alerts button is
+  showing. It fades on its own, stops appearing once GO has been used, and
+  gives up after three launches either way — a hint about an always-visible
+  control, not a notification about something that matters.
+
 ## [2026.07.26.009] - 2026-07-26
 
 ### Changed

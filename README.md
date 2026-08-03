@@ -8,7 +8,7 @@
 
 [![live demo](https://img.shields.io/badge/demo-live-106652?style=flat-square&logo=leaflet&logoColor=white)](https://cdburgess75.github.io/PacketMap/)
 [![smoke tests](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml/badge.svg)](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml)
-[![version](https://img.shields.io/badge/version-2026.07.26.009-D46900?style=flat-square)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2026.07.26.010-D46900?style=flat-square)](CHANGELOG.md)
 [![PWA](https://img.shields.io/badge/PWA-installable_%C2%B7_offline-D46900?style=flat-square)](#install)
 [![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-106652?style=flat-square)](#tech-stack)
 [![license](https://img.shields.io/badge/license-MIT-1061CC?style=flat-square)](LICENSE)
@@ -80,7 +80,8 @@ The whole application is **one `index.html` file** with zero runtime dependencie
 | **Watchlist** | Star callsigns (prefix `*` supported); a banner and optional system notification fire when they're heard or message you. |
 | **Raw console** | Full-screen live packet stream with filter, pause, and a 2000-line ring buffer — the whole protocol, visible. |
 | **Packet parser** | Uncompressed, compressed (base91), Mic-E, objects, items, weather, status, messages, bulletins, PHG/RNG, and the `!DAO!` precision addendum — all decoded in the browser. |
-| **Interface** | Dark and light themes, small / medium / large text sizing, a full-screen map with screen-wake-lock, and full-screen Messages / Raw tabs. |
+| **Driving mode** | One green **GO** button: full screen, follow-me tracking and a screen-wake lock together, so the map stays on you and the phone stays awake. Tap **EXIT** to come back. |
+| **Interface** | Dark and light themes, small / medium / large text sizing, and full-screen Messages / Raw tabs. |
 | **Offline** | Service-worker shell cache, OSM tile cache (1500 tiles, trimmed oldest-first), and an update banner when a new release ships. |
 | **Privacy** | Receive-only mode needs no callsign at all; nothing leaves your browser unless you transmit. |
 
