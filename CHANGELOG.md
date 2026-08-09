@@ -3,6 +3,41 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.011] - 2026-07-26
+
+### Added
+
+- **Watched-station presence: know when someone is on the air.** APRS has no
+  "online" — a station is on the air only in the sense that it transmitted
+  recently, and offline is an inference from silence. So presence is edge
+  detection on last-heard times, per watched station:
+  - **"CALL is on the air"** fires once when a watched station is first heard
+    (with distance and bearing), and **"CALL has gone quiet"** fires once when
+    it falls silent past the threshold (default 30 min, configurable in
+    **Setup → Watchlist → Quiet after**). Steady beaconing in between raises
+    nothing — a mobile sending every minute must not spam.
+  - A **watched strip** pinned above the Heard list: one row per watched
+    station with a green/grey presence dot, "on the air"/"quiet", distance and
+    age. Wildcard entries (`KE5*`) list every station they match; an entry
+    nothing has matched yet shows "not heard yet", so a typo is visible instead
+    of silently never alerting.
+  - A **🔔 activity log** on the Heard tab keeps the last 50 comings and
+    goings with timestamps, persisted across restarts, so events that fired
+    while you were driving aren't lost.
+  - Events raise the banner and, with Notifications on, a system notification.
+    The first 45 seconds after launch fill the log and the dots **without**
+    announcing anything — opening the app streams in everything already on the
+    air, and announcing each one would be noise.
+- Tapping a never-heard watch entry explains itself instead of switching to
+  the map for a station that isn't there.
+
+### Changed
+
+- The old watchlist alert (a banner at most every 30 minutes) is replaced by
+  the presence engine; the 30-minute rhythm survives as the default quiet
+  threshold. Watched calls were already in the server-side filter, so presence
+  works worldwide, not just inside your feed radius.
+
 ## [2026.07.26.010] - 2026-07-26
 
 ### Changed

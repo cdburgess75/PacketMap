@@ -19,7 +19,7 @@ Watch thousands of stations beacon their position and weather in real time — t
 
 <br><br>
 
-[![version](https://img.shields.io/badge/version-2026.07.26.010-D46900?style=flat-square)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2026.07.26.011-D46900?style=flat-square)](CHANGELOG.md)
 [![smoke tests](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml/badge.svg)](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml)
 [![PWA](https://img.shields.io/badge/PWA-installable_%C2%B7_offline-D46900?style=flat-square)](#-install-it-on-your-phone-2-taps)
 [![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-106652?style=flat-square)](#-tech-stack)
@@ -106,7 +106,7 @@ PacketMap puts that live feed on a map — centred on *you* — and lets you joi
 |---|---|
 | **Bulletins** | `BLN0`–`BLN9` / `BLNA`–`BLNZ` broadcasts — net announcements, club notices, relayed weather — collected at the top of Messages. |
 | **Track tails** | Colour-coded polylines for moving stations, persisted on-device (7-day retention), re-seeded on launch, exportable as GPX. |
-| **Watchlist** | Star callsigns (prefix `*` supported); a banner and optional notification fire when they're heard or message you. |
+| **Watchlist presence** | Star callsigns (prefix `*` supported) and know when someone is on the air: a pinned strip with green/grey presence dots, an alert when a station appears **and when it goes quiet**, and a 🔔 activity log of the last 50 comings and goings. Works worldwide — watched calls ride the server-side filter, not just your radius. |
 | **Station actions** | One-tap **navigate** (Apple/Google Maps), **share**, and **GPX** export of any station's track. |
 | **Packet parser** | Uncompressed, compressed (base91), Mic-E, objects, items, weather, status, messages, PHG/RNG, and the `!DAO!` precision addendum — all decoded in the browser. |
 | **Your position** | Live self-marker showing *your* APRS symbol, accuracy circle, and follow-me. No GPS? Long-press the map to set position by hand. |
