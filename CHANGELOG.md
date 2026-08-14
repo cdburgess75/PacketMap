@@ -3,6 +3,18 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.012] - 2026-07-26
+
+### Added
+
+- **Share button in the header**, beside the text-size and theme controls. It
+  opens the phone's native share sheet (text, mail, whatever the device has)
+  with the app's name, a one-line description, and the URL; on desktops with
+  no share sheet it copies the link and says so. Cancelling the sheet is
+  treated as cancelling, not as an error. A self-hosted copy shares its own
+  address — except on localhost, where a dev URL would be useless to the
+  recipient, so the public one goes out instead.
+
 ## [2026.07.26.011] - 2026-07-26
 
 ### Added
