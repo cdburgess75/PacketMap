@@ -19,7 +19,7 @@ Watch thousands of stations beacon their position and weather in real time — t
 
 <br><br>
 
-[![version](https://img.shields.io/badge/version-2026.07.26.012-D46900?style=flat-square)](CHANGELOG.md)
+[![version](https://img.shields.io/badge/version-2026.07.26.013-D46900?style=flat-square)](CHANGELOG.md)
 [![smoke tests](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml/badge.svg)](https://github.com/cdburgess75/PacketMap/actions/workflows/smoke.yml)
 [![PWA](https://img.shields.io/badge/PWA-installable_%C2%B7_offline-D46900?style=flat-square)](#-install-it-on-your-phone-2-taps)
 [![runtime dependencies](https://img.shields.io/badge/runtime_deps-0-106652?style=flat-square)](#-tech-stack)

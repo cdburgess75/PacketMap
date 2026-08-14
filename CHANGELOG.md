@@ -3,6 +3,26 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.013] - 2026-07-26
+
+### Fixed
+
+- **Blank bands at the top and bottom of the screen on iPhone.** Two bugs,
+  both present since the initial release, both scaling with the text-size
+  setting:
+  - The status-bar inset was applied **twice** — once on `body`, once again
+    on the header — so everything below the notch started a full inset lower
+    than it should.
+  - The text-size zoom multiplied the header's and nav's `env(safe-area-inset-*)`
+    paddings, because CSS `zoom` scales lengths resolved inside the zoomed
+    element. At Large text the wordmark sat **130 px** down instead of 71,
+    and the home-bar padding grew to 41 px instead of 34.
+  The inset now lives on `body` exactly once, and the nav/compose paddings
+  divide the inset by the zoom factor so the rendered gap equals the real
+  inset at every text size. Verified with real insets injected via
+  DevTools-protocol emulation (59 px notch / 34 px home bar) at all three
+  text sizes.
+
 ## [2026.07.26.012] - 2026-07-26
 
 ### Added
