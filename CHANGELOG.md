@@ -3,6 +3,15 @@
 All notable changes to PacketMap. Format follows Keep a Changelog; versions
 use the repo scheme `YYYY.MM.DD.NNN`.
 
+## [2026.07.26.014] - 2026-07-26
+
+### Changed
+
+- **Removed the glow behind the "PacketMap" wordmark in the header.** It was
+  a double `text-shadow` (a tight 4px blur plus a wider 12px halo) meant to
+  give the amber logotype a neon look in the dark theme; in practice it just
+  read as blurry. The header text is plain amber now, no shadow.
+
 ## [2026.07.26.013] - 2026-07-26
 
 ### Fixed
